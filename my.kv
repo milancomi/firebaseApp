@@ -1,0 +1,37 @@
+<MyDatabase>:
+    textValue: textValue
+    GridLayout:
+        cols:1
+        size: root.width-150,root.height-150
+        pos:100,100
+        GridLayout:
+            cols:1
+            Label:
+                text:'enter JSON'
+                
+            ScrollView:
+                size_hint_y:3
+                height:100
+                do_scroll_x: False
+                do_scroll_y: True
+                TextInput:
+                    id: textValue
+                    text:'{"Parent":{"Child1":"Value","Child2":"Value"}}'
+        GridLayout:
+            cols:1
+            Button:
+                text: 'Patch Line'
+                on_release: root.patch(textValue.text)
+            Button:
+                text:'Post Line'
+                on_release: root.post(textValue.text)
+
+            Button:
+                text:'Put Line'
+                on_release: root.put(textValue.text)
+            Button:
+                text:'Delete Line'
+                on_release: root.delete(textValue.text)
+            Button:
+                text:'Get & Print Database'
+                on_release: root.get()
