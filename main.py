@@ -11,24 +11,20 @@ class MyDatabase(Widget):
 
     url = 'https://samplefirebaseapp-13d04.firebaseio.com/.json'
 
-    def patch(self,instance):  #  CreateOrUpdate
-        # {"Parent":{"Child1":"Value","Child2":"Value"}}
+    def patch(self,instance):
         to_database = json.loads(self.textValue.text)
         requests.patch(url=self.url,json = to_database)
-        # self.textValue = '{"naziv_tabele":{"naziv_podatka1":"vrednost_podatka1","naziv_podatka2":"vrednost_podatka2"}}'
 
-    def post(self,instance): # ne koristi se, kreira random name
+    def post(self,instance):
 
         to_database = json.loads(self.textValue.text)
         requests.post(url=self.url,json = to_database) 
-
-    def put(self,instance): # brise sve i ubacuje samo poslednji record
+    def put(self,instance):
 
         to_database = json.loads(self.textValue.text)
         requests.put(url=self.url,json = to_database) 
 
     def delete(self,instance):
-        # Parent/Child1
         requests.delete(url=self.url[:-5]+ self.textValue.text + ".json") 
 
     auth_key='Ccnw5uXXrTLjVq4ghFSD7nlIp0Ov7MKFYrHWGriH'
